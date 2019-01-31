@@ -46,9 +46,12 @@ int main() {
 	cout << "Second " << container->at(1)->evaluate() << endl;
 	cout << "Third " << container->at(2)->evaluate() << endl;
 	
-	cout << "First: 28" << endl;
-	cout << "Second: 5" << endl;
-	cout << "Third: 4" << endl;
+	container->set_sort_function(new Bubble());
+	container->sort();
 	
+	cout << "First " << container->at(0)->evaluate() << endl;
+        cout << "Second " << container->at(1)->evaluate() << endl;
+        cout << "Third " << container->at(2)->evaluate() << endl;
+
 	return 0;
 }

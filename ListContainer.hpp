@@ -9,20 +9,20 @@
 #include <list>
 #include <stdio.h>
 
-class Sort;
-class Base;
+//class Sort;
+//class Base;
 
 using namespace std;
 
 class ListContainer : public Container {
     protected:
-        list<Base*> TreeList;
+        list<Base* > TreeList;
     public:
-        /*void set_sort_function(Sort* sort_function) {
+        void set_sort_function(Sort* sort_function) {
             this->sort_function = sort_function;
-        }*/
+        }
         void add_element(Base* element) {
-            TreeList.push_front(element);
+            TreeList.push_back(element);
         }
         void print() {
             for (list<Base*>::iterator it = TreeList.begin(); it != TreeList.end(); ++it) {
