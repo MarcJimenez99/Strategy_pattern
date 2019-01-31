@@ -1,4 +1,7 @@
 #include "gtest/gtest.h"
+#include "ListContainer.hpp"
+#include "sort.hpp"
+#include "bubble.hpp"
 #include "base.h"
 #include "Pow.cpp"
 #include "Mult.cpp"
@@ -10,244 +13,43 @@
 #include "RandMock.cpp"
 #include <iostream>
 #include <string>
+#include <list>
 
 using namespace std;
 
-TEST(CompositeTest, OpEvaluateInt) {
-	Op* Op1 = new Op(1);
-	EXPECT_EQ(1.0, Op1->evaluate());
-}
-TEST(CompositeTest, RandEvaluate) {
-	RandMock* x = new RandMock();
-	EXPECT_EQ(2.0, x->evaluate());
-}
-TEST(CompositeTest, OpEvaluateDouble) {
-	Op* Op1 = new Op(1.0);
-	EXPECT_EQ(1.0, Op1->evaluate());
-}
-TEST(CompositeTest, OpEvaluateNegative) {
-	Op* Op1 = new Op(-1); 
-	EXPECT_EQ(-1.0, Op1->evaluate());
-} 
-TEST(CompositeTest, OpStringifyInt) {
-	Op* Op1 = new Op(1);
-	EXPECT_EQ("1.000000", Op1->stringify());
-} 
-TEST(CompositeTest, RandStringify) {
-	RandMock* x = new RandMock(); 
-	EXPECT_EQ("2.000000", x->stringify());
-}
-TEST(CompositeTest, OpStringifyDouble) {
-	Op* Op1 = new Op(1.0);
-	EXPECT_EQ("1.000000", Op1->stringify());
-}
-TEST(CompositeTest, OpStringifyNegative) {
-	Op* Op1 = new Op(-1.0);
-	EXPECT_EQ("-1.000000", Op1->stringify());
-}
-TEST(CompositeTest, PowDoubleOpEvaluate) {
-	Op* x = new Op(2.0);
-	Op* y = new Op(2.0); 
-	Pow* Pow1 = new Pow(x, y); 
-	EXPECT_EQ(4.0, Pow1->evaluate()); 
-}
-TEST(CompositeTest, PowRandOpEvaluate) {
-	RandMock* x = new RandMock();
-	Op* y = new Op(2.0);
-	Pow* Pow1 = new Pow(x, y); 
-	EXPECT_EQ(4.0, Pow1->evaluate());
-}
-TEST(CompositeTest, PowDoubleRandEvaluate) {
-	RandMock* x = new RandMock();
-	RandMock* y = new RandMock();
-	Pow* Pow1 = new Pow(x, y);
-	EXPECT_EQ(4.0, Pow1->evaluate()); 
-}
-TEST(CompositeTest, PowDoublOpStringify) {
-	Op* x = new Op(2.0);
-        Op* y = new Op(2.0);
-        Pow* Pow1 = new Pow(x, y);     
-	EXPECT_EQ("2.000000 ^ 2.000000", Pow1->stringify());
-}
-TEST(CompositeTest, PowRandOpStringify) {
-	RandMock* x = new RandMock();
-        Op* y = new Op(2.0);
-        Pow* Pow1 = new Pow(x, y);
-        EXPECT_EQ("2.000000 ^ 2.000000", Pow1->stringify());
-}
-TEST(CompositeTest, PowDoubleRandStringify) {
-	RandMock* x = new RandMock();
-        RandMock* y = new RandMock();
-        Pow* Pow1 = new Pow(x, y);
-        EXPECT_EQ("2.000000 ^ 2.000000", Pow1->stringify());
-}
-TEST(CompositeTest, MultEvaluate) {
-	Op* x = new Op(2.0); 
-	Op* y = new Op(2.0); 
-	Mult* Mult1 = new Mult(x, y);
-	EXPECT_EQ(4.0, Mult1->evaluate());
-}
-TEST(CompositeTest, MultStringify) {
-	Op* x = new Op(2.0);
-        Op* y = new Op(2.0);
-        Mult* Mult1 = new Mult(x, y);
-	EXPECT_EQ("2.000000 * 2.000000", Mult1->stringify()); 
-}
-TEST(CompositeTest, MultPowOpEvaluate) {
-	Op* Op1 = new Op(2.0);
-	Op* Op2 = new Op(2.0);
-	Pow* Pow1 = new Pow(Op1, Op1); 
-	Op* Op3 = new Op(2.0);
-	Mult* Mult1 = new Mult(Pow1, Op3);
-	EXPECT_EQ(8.0, Mult1->evaluate()); 
-}
-TEST(CompositeTest, MultPowOpStringify) {
-	Op* Op1 = new Op(2.0);
-        Op* Op2 = new Op(2.0);
-        Pow* Pow1 = new Pow(Op1, Op1);
-        Op* Op3 = new Op(2.0);
-        Mult* Mult1 = new Mult(Pow1, Op3);
-        EXPECT_EQ("4.000000 * 2.000000", Mult1->stringify());	
-}
-TEST(CompositeTest, MultNegativeOpEvaluate) {
-	Op* Op1 = new Op(2.0);
-	Op* Op2 = new Op(-2.0);
-	Mult* Mult1 = new Mult(Op1, Op2);
-	EXPECT_EQ(-4.0, Mult1->evaluate()); 
-}
-TEST(CompositeTest, MultNegNegEvaluate) {
-	Op* Op1 = new Op(-2.0); 
-	Op* Op2 = new Op(-2.0); 
-	Mult* Mult1 = new Mult(Op1, Op2);
-	EXPECT_EQ(4.0, Mult1->evaluate()); 
-}
-TEST(CompositeTest, MultNegativeOpStringify) {
-        Op* Op1 = new Op(2.0);
-        Op* Op2 = new Op(-2.0);
-        Mult* Mult1 = new Mult(Op1, Op2);
-        EXPECT_EQ("2.000000 * -2.000000", Mult1->stringify());
-}
-TEST(CompositeTest, MultNegNegStringify) {
-        Op* Op1 = new Op(-2.0);
-        Op* Op2 = new Op(-2.0);
-        Mult* Mult1 = new Mult(Op1, Op2);
-        EXPECT_EQ("-2.000000 * -2.000000", Mult1->stringify());
-}
-TEST(CompositeTest, DivOpEvaluate) {
-	Op* x = new Op(2.0);
-	Op* y = new Op(2.0); 
-	Div* Div1 = new Div(x, y);
-	EXPECT_EQ(1.0, Div1->evaluate());
-}
-TEST(CompositeTest, DivOpStringify) {
-	Op* x = new Op(2.0);
-        Op* y = new Op(2.0);
-        Div* Div1 = new Div(x, y);
-        EXPECT_EQ("2.000000 / 2.000000", Div1->stringify());
-}
-TEST(CompositeTest, DivMultOpEvaluate) {
-	Op* x = new Op(2.0);
-	Op* y = new Op(2.0);
-	Mult* Mult1 = new Mult(x, y);
-	Op* z = new Op(2.0);
-	Div* Div1 = new Div(Mult1, z); 
-	EXPECT_EQ(2.0, Div1->evaluate());
-}
-TEST(CompositeTest, DivMultOpStringify) {
-	Op* x = new Op(2.0);
-        Op* y = new Op(2.0);
-        Mult* Mult1 = new Mult(x, y);
-        Op* z = new Op(2.0);
-        Div* Div1 = new Div(Mult1, z);
-        EXPECT_EQ("4.000000 / 2.000000", Div1->stringify());
-}
-TEST(CompositeTest, AddEvaluate){
-	Op* x = new Op(2.0);
-	Op* y = new Op(2.0);
-	Add* Add1 = new Add(x,y);
-	EXPECT_EQ(4.0, Add1->evaluate());
-}
-TEST(CompositeTest, AddStringify){
-	Op * x = new Op(2.0);
-	Op * y = new Op(2.0);
-	Add* Add1 = new Add(x,y);
-	EXPECT_EQ("2.000000 + 2.000000", Add1->stringify());
-}
-TEST(CompositeTest, AddNegEvaluate){
-	Op* x = new Op(-2.0);
-	Op* y = new Op(1.0);
-	Add* Add1 = new Add(x,y);
-	EXPECT_EQ(-1.0, Add1->evaluate());
-}
-TEST(CompositeTest, AddNegStringify){
-	Op* x = new Op(-2.0);
-	Op* y = new Op(1.0);
-	Add* Add1 = new Add(x,y);
-	EXPECT_EQ("-2.000000 + 1.000000", Add1->stringify());	
-}
-TEST(CompositeTest, AddPowEvaluate){
-	Op * x = new Op(2.0);
-	Op * y = new Op(2.0);
-	Pow * Pow1 = new Pow(x,y);
-	Op * z = new  Op(2.0);
-	Add * Add1 = new Add(Pow1, z);
-	EXPECT_EQ(6.0, Add1->evaluate());
-}
-TEST(CompositeTest, AddPowStringify){
-	Op* x = new Op(2.0);
-	Op* y = new Op(2.0);
-	Pow* Pow1 = new Pow(x,y);
-	Op* z = new  Op(2.0);
-	Add* Add1 = new Add(Pow1, z);
-	EXPECT_EQ("4.000000 + 2.000000" , Add1->stringify());
-}
-TEST(CompositeTest, AddMultEvaluate){
-	Op * x = new Op(2.0);
-	Op * y = new Op(5.0);
-	Mult * Mult1 = new Mult(x,y);
-	Op * z = new Op(2.0);
-	Add * Add1 = new Add(Mult1, z);
-	EXPECT_EQ(12.0, Add1->evaluate());
-}
-TEST(CompositeTest, AddMultStringify){
-	Op* x = new Op(2.0);
-	Op* y = new Op(5.0);
-	Mult * Mult1 = new Mult(x,y);
-	Op* z = new Op(2.0);
-	Add* Add1 = new Add(Mult1, z);
-	EXPECT_EQ("10.000000 + 2.000000" , Add1->stringify());
-}
-TEST(CompositeTest, SubEvaluate){
-	Op * x = new Op(2.0);
-	Op * y = new Op(2.0);
-	Sub * Sub1 = new Sub(x,y);
-	EXPECT_EQ(0.0, Sub1 -> evaluate());
-}
-TEST(CompositeTest, SubStringify){
-	Op * x = new Op(2.0);
-	Op * y = new Op(2.0);
-	Sub * Sub1 = new Sub(x,y);
-	EXPECT_EQ("2.000000 - 2.000000" , Sub1 -> stringify());	
-}
-TEST(CompositeTest, SubPowEvaluate){
-	Op* x = new Op(2.0);
-	Op* y = new Op(2.0);
-	Pow* Pow1 = new Pow(x,y);
-	Op* z = new  Op(2.0);
-	Sub* Sub1 = new Sub(Pow1, z);
-	EXPECT_EQ(2.0, Sub1->evaluate());
-}
+TEST(StrategyTest, BubbleTest) {
 
-TEST(CompositeTest, SubPowStringify){
-	Op* x = new Op(2.0);
-	Op* y = new Op(2.0);
-	Pow* Pow1 = new Pow(x,y);
-	Op* z = new  Op(2.0);
-	Sub* Sub1 = new Sub(Pow1, z);
-	EXPECT_EQ("4.000000 - 2.000000" , Sub1->stringify());
+	Op* seven = new Op(7);
+	Op* four = new Op(4);
+	Mult* TreeA = new Mult(seven, four);
+
+	Op* three = new Op(3);
+	Op* two = new Op(2);
+	Add* TreeB = new Add(three, two);
+
+	Op* ten = new Op(10);
+	Op* six = new Op(6);
+	Sub* TreeC = new Sub(ten, six);
+
+	ListContainer* container = new ListContainer();
+	container->add_element(TreeA);
+	container->add_element(TreeB);
+	container->add_element(TreeC);
+
+	ASSERT_EQ(container->size(), 3);
+	EXPECT_EQ(container->at(0)->evaluate(), 28);
+	EXPECT_EQ(container->at(1)->evaluate(), 5);
+	EXPECT_EQ(container->at(2)->evaluate(), 4);
+
+	container->set_sort_function(new Bubble());
+	container->sort();
+	
+	ASSERT_EQ(container->size(), 3);
+	EXPECT_EQ(container->at(0)->evaluate(), 4);
+	EXPECT_EQ(container->at(1)->evaluate(), 5);
+	EXPECT_EQ(container->at(2)->evaluate(), 28);
+
 }
-
-
 
 int main(int argc, char**argv) {
 	::testing::InitGoogleTest(&argc, argv);

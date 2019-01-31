@@ -1,5 +1,5 @@
-#ifndef __SORT_HPP__
-#define __SORT_HPP__
+#ifndef _SORT_HPP_
+#define _SORT_HPP_
 
 #include "container.hpp"
 
@@ -8,7 +8,7 @@ class Container;
 class Sort {
     public:
         /* Constructors */
-        Sort();
+        Sort() {};
 
         /* Pure Virtual Functions */
         virtual void sort(Container* container) = 0;
