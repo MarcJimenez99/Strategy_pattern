@@ -18,9 +18,9 @@ class ListContainer : public Container {
     protected:
         list<Base*> TreeList;
     public:
-        void set_sort_function(Sort* sort_function) {
+        /*void set_sort_function(Sort* sort_function) {
             this->sort_function = sort_function;
-        }
+        }*/
         void add_element(Base* element) {
             TreeList.push_front(element);
         }
@@ -49,15 +49,25 @@ class ListContainer : public Container {
                 it1++;
                 it2++;
             }
+		for (list<Base*>::iterator it3 = TreeList.begin(); it3 != TreeList.end(); ++it3) {
+			if (counter == i) {
+				*it3 = temp2;
+			}
+			if (counter == j) {
+				*it3 = temp1;
+			}
+			++counter;
+		}
         }
         Base* at(int i) {
-            int counter = 0;
-            for (list<Base*>::iterator it = TreeList.begin(); it != TreeList.end(); ++it) {
-                if (counter == i) {
-                    Base* temp1 = (*it);
-                    return temp1;
-                }
-            }
+		int counter = 0;
+		for (list<Base*>::iterator it = TreeList.begin(); it != TreeList.end(); ++it) {
+			if (counter == i) {
+				Base* temp1 = (*it);
+				return temp1;
+                	}
+			counter++;
+		}
         }
         int size() {
             int size = 0;

@@ -11,8 +11,11 @@
 #include "Rand.cpp"
 #include "Op.cpp" 
 #include "RandMock.cpp"
+#include "VectorContainer.hpp"
+#include "SelectionSort.hpp"
 #include <iostream>
 #include <string>
+#include <vector>
 #include <list>
 
 using namespace std;
@@ -40,15 +43,6 @@ TEST(StrategyTest, BubbleTest) {
 	EXPECT_EQ(container->at(0)->evaluate(), 28);
 	EXPECT_EQ(container->at(1)->evaluate(), 5);
 	EXPECT_EQ(container->at(2)->evaluate(), 4);
-
-/*	container->set_sort_function(new Bubble());
-	container->sort();
-
-	ASSERT_EQ(container->size(), 3);
-	EXPECT_EQ(container->at(0)->evaluate(), 4);
-	EXPECT_EQ(container->at(1)->evaluate(), 5);
-	EXPECT_EQ(container->at(2)->evaluate(), 28);
-*/
 }
 
 int main(int argc, char**argv) {

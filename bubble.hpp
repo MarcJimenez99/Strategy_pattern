@@ -5,8 +5,8 @@
 #include "sort.hpp"
 #include "ListContainer.hpp"
 
-class Container;
-class Sort;
+//class Container;
+//class Sort;
 
 class Bubble : public Sort {
     private:

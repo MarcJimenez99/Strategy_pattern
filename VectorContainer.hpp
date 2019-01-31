@@ -13,9 +13,9 @@ class VectorContainer : public Container {
             Sort * sort_function;
             vector <Base *> v1;
         public:
-            void set_sort_function(Sort * sort_function){
+            /*void set_sort_function(Sort * sort_function){
                 this->sort_function = sort_function;
-            }
+            }*/
             
             void add_element(Base * element){
                 v1.push_back(element);
