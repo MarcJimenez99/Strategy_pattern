@@ -49,7 +49,7 @@ int main() {
 	
 	cout << "First " << container->at(0)->evaluate() << endl;
         cout << "Second " << container->at(1)->evaluate() << endl;
-        cout << "Third " << container->at(2)->evaluate() << endl;
+        cout << "Third " << container->at(2)->evaluate() << endl << endl;
 
 	cout << "Second Example: " << endl;
 	
