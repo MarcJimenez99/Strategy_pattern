@@ -33,34 +33,23 @@ class ListContainer : public Container {
             sort_function->sort(this);
         }
         void swap(int i, int j) {
-            list<Base*>::iterator it1 = TreeList.begin();
-            list<Base*>::iterator it2 = TreeList.begin();
-            Base* temp1 = nullptr;
-            Base* temp2 = nullptr;
-            int counter = 0;
-            while (it1 != TreeList.end() && it2 != TreeList.end()) {
-                if (counter == i) {
-                    temp1 = (*it1);
-                }
-                if  (counter == j) {
-                    temp2 = (*it2);
-                }
-                ++counter;
-                it1++;
-                it2++;
-            }
-		for (list<Base*>::iterator it3 = TreeList.begin(); it3 != TreeList.end(); ++it3) {
-			if (counter == i) {
-				*it3 = temp2;
-			}
-			if (counter == j) {
-				*it3 = temp1;
-			}
-			++counter;
+            list<Base*>::iterator ptr = TreeList.begin();
+		auto ptr1 = ptr;
+		auto ptr2 = ptr;
+		for (unsigned int x = 0; x < i; ++x) {
+			ptr1++;
 		}
+		for (unsigned int y = 0; y < j; ++y) {
+			ptr2++;
+		}
+		std::swap(*ptr1, *ptr2);
         }
         Base* at(int i) {
 		int counter = 0;
+		if (TreeList.size() == 0) {
+			Base* fail = nullptr;
+			return fail;	
+		}
 		for (list<Base*>::iterator it = TreeList.begin(); it != TreeList.end(); ++it) {
 			if (counter == i) {
 				Base* temp1 = (*it);
