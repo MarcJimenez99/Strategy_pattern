@@ -39,7 +39,7 @@ int main() {
 	container->add_element(TreeB);
 	container->add_element(TreeC);
 
-
+	cout << "First Example: " << endl;
 	cout << "First " << container->at(0)->evaluate() << endl;
 	cout << "Second " << container->at(1)->evaluate() << endl;
 	cout << "Third " << container->at(2)->evaluate() << endl;
@@ -50,6 +50,37 @@ int main() {
 	cout << "First " << container->at(0)->evaluate() << endl;
         cout << "Second " << container->at(1)->evaluate() << endl;
         cout << "Third " << container->at(2)->evaluate() << endl;
+
+	cout << "Second Example: " << endl;
+	
+	Op* seven = new Op(7);
+        Op* negOne = new Op(-1);
+        Mult* TreeA = new Mult(seven, negOne);
+
+        Op* negThree = new Op(-3);
+        Op* negFive = new Op(-5);
+        Add* TreeB = new Add(negThree, negFive);
+
+        Op* six = new Op(6);
+        Op* eight = new Op(8);
+        Sub* TreeC = new Sub(six, eight);
+
+        VectorContainer* container = new VectorContainer();
+
+        container->add_element(TreeA);
+        container->add_element(TreeB);
+	container->add_element(TreeC);
+
+        cout << "First " << container->at(0)->evaluate() << endl;
+        cout << "Second " << container->at(1)->evaluate() << endl;
+        cout << "Third " << container->at(2)->evaluate() << endl;
+
+        container->set_sort_function(new Bubble());
+        container->sort();
+
+        cout << "First " << container->at(0)->evaluate() << endl;
+        cout << "Second " << container->at(1)->evaluate() << endl;
+        cout << "Third " << container->at(2)->evaluate() << endl;ontainer->add_element(TreeC);
 
 	return 0;
 }
