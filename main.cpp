@@ -39,8 +39,6 @@ int main() {
 	container->add_element(TreeB);
 	container->add_element(TreeC);
 
-	container->set_sort_function(new Bubble());
-	container->sort();
 
 	cout << "First " << container->at(0)->evaluate() << endl;
 	cout << "Second " << container->at(1)->evaluate() << endl;
