@@ -9,6 +9,8 @@
 //class Sort;
 
 class Bubble : public Sort {
+	private:
+		Sort* sort_function = nullptr;
     public:
         void sort(Container* container) {
             int flag = 1;
@@ -17,7 +19,7 @@ class Bubble : public Sort {
                 flag = 0;
                 for (int j = 0; j < (numLength - 1); j++) {
                     if (container->at(j+1)->evaluate() < container->at(j)->evaluate()) {
-                        container->swap(j+1, j);
+			container->swap(j+1, j);
                         flag = 1;
                     }
                 }

@@ -1,34 +1,30 @@
-#ifndef _SELECTIONSORT_HPP_
-#define _SELECTIONSORT_HPP_
+#ifndef SELECTIONSORT_HPP
+#define SELECTIONSORT_HPP
 
-#include "sort.hpp"
 #include "VectorContainer.hpp"
 #include "container.hpp"
-#include<iostream>
+#include "sort.hpp"
+#include <iostream>
+#include <vector> 
+
 using namespace std;
 
 class Container;
 
-class SelectionSort : public Sort{
-    public:
-        //selecti
-        /* Pure Virtual Functions */
-        void sort(Container* container){
-           int i, j, first;
-           Base * temp;
-           int numLength = container->size();
-            for (i= numLength - 1; i > 0; i--){
-               first = 0;                 // initialize to subscript of first element
-               for (j=1; j<=i; j++)   // locate smallest between positions 1 and i.
-              {
-                     if (container->at(j) < container->at(first))
-                     first = j;
-              }
-              container->swap(i,first);
-             
-         }
-         return;
-    } 
+class SelectionSort : public Sort {
+	public: 
+		void sort(Container* container) {
+			int first = 0;
+			for (int i = container->size()-1; i > 0; i--) {
+				first = 0;
+				for (int j = 1; j <= i; j++) {
+					if (container->at(j)->evaluate() > container->at(first)->evaluate()) {
+						first = j;
+					}
+				} 
+				container->swap(first, i);
+			}
+		}
 };
 
-#endif //__SORT_HPP__
+#endif
