@@ -1,7 +1,7 @@
 #ifndef POW_H
 #define POW_H
 
-#include "base.h"
+#include "base.hpp"
 #include "Op.cpp"
 #include "Rand.cpp"
 

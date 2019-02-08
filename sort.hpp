@@ -1,11 +1,10 @@
 #ifndef _SORT_HPP_
 #define _SORT_HPP_
 
-//#include "base.h"
+
 #include "container.hpp"
 
-//class Container;
-
+class Container;
 class Sort {
     public:
         /* Constructors */

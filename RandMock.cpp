@@ -1,7 +1,7 @@
 #ifndef RAND_MOCK_H
 #define RAND_MOCK_H
 
-#include "base.h"
+#include "base.hpp"
 
 class RandMock : public Base {
 	public:

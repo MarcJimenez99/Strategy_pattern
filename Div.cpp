@@ -1,7 +1,7 @@
 #ifndef DIV_H
 #define DIV_H
 
-#include "base.h"
+#include "base.hpp"
 #include "Op.cpp"
 #include "Rand.cpp"
 #include "Pow.cpp"

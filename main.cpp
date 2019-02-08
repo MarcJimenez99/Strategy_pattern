@@ -1,4 +1,4 @@
-#include "base.h"
+#include "base.hpp"
 #include "Pow.cpp"
 #include "Mult.cpp"
 #include "Div.cpp"
@@ -13,7 +13,7 @@
 #include "VectorContainer.h"
 #include "SelectionSort.h"
 #include <list>
-#include <vector>
+//#include <vector>
 #include <iostream>
 #include <string>
 

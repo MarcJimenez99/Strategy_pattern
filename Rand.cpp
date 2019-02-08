@@ -1,6 +1,6 @@
 #ifndef RAND_H
 #define RAND_H
-#include "base.h"
+#include "base.hpp"
  
 class Rand : public Base {
 	private:

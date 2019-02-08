@@ -4,6 +4,7 @@
 #include <list>
 
 #include "container.hpp"
+#include "sort.hpp"
 
 class ListContainer : public Container {
 	protected:
