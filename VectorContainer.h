@@ -1,17 +1,14 @@
 #ifndef __VECTORCONTAINER_H__
 #define __VECTORCONTAINER_H__
 
-#include<iostream>
-#include<vector>
-using namespace std;
+#include <vector> 
+//#include "base.h"
+#include "sort.hpp"
+//class SelectionSort;
+//class Bubble;
 
-class Base;
-class Sort;
-class Container;
-
-class VectorContainer : public Container{
+class VectorContainer : public Container  {
 	protected:
-		Sort * sort_function;
 		vector<Base *> v1;
 	public:
 		void set_sort_function(Sort * sort_function);

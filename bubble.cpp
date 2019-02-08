@@ -1,18 +1,6 @@
-#ifndef _BUBBLE_HPP_
-#define _BUBBLE_HPP_
+#include "bubble.h"
 
-#include "container.hpp"
-#include "sort.hpp"
-#include "ListContainer.hpp"
-
-//class Container;
-//class Sort;
-
-class Bubble : public Sort {
-	private:
-		Sort* sort_function = nullptr;
-    public:
-        void sort(Container* container) {
+        void Bubble::sort(Container* container) {
             int flag = 1;
             int numLength = container->size();
             for (int i = 1; (i <= numLength) && flag; i++) {
@@ -25,6 +13,4 @@ class Bubble : public Sort {
                 }
             }
         }        
-};
 
-#endif

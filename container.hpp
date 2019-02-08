@@ -1,11 +1,10 @@
 #ifndef __CONTAINER_HPP__
 #define __CONTAINER_HPP__
 
-#include "sort.hpp"
 #include "base.h"
+//#include "sort.hpp"
 
 class Sort;
-class Base;
 
 class Container {
     protected:
@@ -17,7 +16,7 @@ class Container {
         Container(Sort* function) : sort_function(function) { };
 
         /* Non Virtual Functions */
-        void set_sort_function(Sort* sort_function); // set the type of sorting algorithm
+        virtual void set_sort_function(Sort* sort_function) = 0; // set the type of sorting algorithm
 
         /* Pure Virtual Functions */
         // push the top pointer of the tree into container

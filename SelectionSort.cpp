@@ -1,19 +1,6 @@
-#ifndef SELECTIONSORT_HPP
-#define SELECTIONSORT_HPP
+#include "SelectionSort.h"
 
-#include "VectorContainer.hpp"
-#include "container.hpp"
-#include "sort.hpp"
-#include <iostream>
-#include <vector> 
-
-using namespace std;
-
-class Container;
-
-class SelectionSort : public Sort {
-	public: 
-		void sort(Container* container) {
+		void SelectionSort::sort(Container* container) {
 			int first = 0;
 			for (int i = container->size()-1; i > 0; i--) {
 				first = 0;
@@ -25,6 +12,3 @@ class SelectionSort : public Sort {
 				container->swap(first, i);
 			}
 		}
-};
-
-#endif

@@ -1,8 +1,4 @@
 #include "gtest/gtest.h"
-#include "ListContainer.hpp"
-#include "sort.hpp"
-#include "bubble.hpp"
-#include "base.h"
 #include "Pow.cpp"
 #include "Mult.cpp"
 #include "Div.cpp"
@@ -11,14 +7,17 @@
 #include "Rand.cpp"
 #include "Op.cpp" 
 #include "RandMock.cpp"
-#include "VectorContainer.hpp"
-#include "SelectionSort.hpp"
-#include <iostream>
-#include <string>
-#include <vector>
-#include <list>
-
-using namespace std;
+#include "container.hpp"
+#include "ListContainer.h"
+#include "VectorContainer.h"
+#include "bubble.h"
+#include "SelectionSort.h"
+//#include "sort.hpp"
+//#include "base.h"
+//class Bubble;
+//class SelectionSort;
+//class VectorContainer;
+//class ListContainer;
 
 TEST(StrategyTest, PopulateList) {
 

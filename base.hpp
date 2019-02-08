@@ -1,6 +1,7 @@
 #ifndef __BASE_HPP__
 #define __BASE_HPP__
 
+#include <iosfwd>
 #include <string>
 
 class Base {

@@ -1,38 +1,21 @@
-#ifndef LIST_CONTAINER_HPP
-#define LIST_CONTAINER_HPP
-
+#include "ListContainer.h"       	
 #include "sort.hpp"
-#include "base.h"
-#include "container.hpp"
-#include "bubble.hpp"
-#include <iostream>
-#include <list>
-#include <stdio.h>
 
-//class Sort;
-//class Base;
-
-using namespace std;
-
-class ListContainer : public Container {
-    protected:
-        list<Base* > TreeList;
-    public:
-        void set_sort_function(Sort* sort_function) {
+	void ListContainer::set_sort_function(Sort* sort_function) {
             this->sort_function = sort_function;
         }
-        void add_element(Base* element) {
+        void ListContainer::add_element(Base* element) {
             TreeList.push_back(element);
         }
-        void print() {
+        void ListContainer::print() {
             for (list<Base*>::iterator it = TreeList.begin(); it != TreeList.end(); ++it) {
                 (*it)->stringify();
             }
         }
-        void sort() {
+        void ListContainer::sort() {
             sort_function->sort(this);
         }
-        void swap(int i, int j) {
+        void ListContainer::swap(int i, int j) {
             list<Base*>::iterator ptr = TreeList.begin();
 		auto ptr1 = ptr;
 		auto ptr2 = ptr;
@@ -44,7 +27,7 @@ class ListContainer : public Container {
 		}
 		std::swap(*ptr1, *ptr2);
         }
-        Base* at(int i) {
+        Base* ListContainer::at(int i) {
 		int counter = 0;
 		if (TreeList.size() == 0) {
 			Base* fail = nullptr;
@@ -58,13 +41,10 @@ class ListContainer : public Container {
 			counter++;
 		}
         }
-        int size() {
+        int ListContainer::size() {
             int size = 0;
             for (list<Base*>::iterator it = TreeList.begin(); it != TreeList.end(); ++it) {
                 ++size;
             }
             return size;
         }
-};
-
-#endif
