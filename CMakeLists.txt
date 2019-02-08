@@ -10,10 +10,10 @@ ADD_EXECUTABLE(lab
 
 ADD_EXECUTABLE(test
 	unit_test.cpp
-	bubble.cpp
-	SelectionSort.cpp
 	VectorContainer.cpp
 	ListContainer.cpp
+	bubble.cpp
+	SelectionSort.cpp
 )
 
 TARGET_LINK_LIBRARIES(test gtest)

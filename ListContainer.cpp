@@ -1,9 +1,6 @@
 #include "ListContainer.h"       	
 #include "sort.hpp"
 
-	void ListContainer::set_sort_function(Sort* sort_function) {
-            this->sort_function = sort_function;
-        }
         void ListContainer::add_element(Base* element) {
             TreeList.push_back(element);
         }

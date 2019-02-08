@@ -7,11 +7,11 @@
 #include "Rand.cpp"
 #include "Op.cpp"
 #include "container.hpp"
-#include "ListContainer.h"
+#include "ListContainer.cpp"
 #include "sort.hpp"
-#include "bubble.h"
-#include "VectorContainer.h"
-#include "SelectionSort.h"
+#include "bubble.cpp"
+#include "VectorContainer.cpp"
+#include "SelectionSort.cpp"
 #include <list>
 //#include <vector>
 #include <iostream>

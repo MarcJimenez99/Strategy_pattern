@@ -11,7 +11,7 @@ class ListContainer : public Container {
 		//Sort* sort_function;
 		list<Base*> TreeList; 
 	public: 
-		void set_sort_function(Sort* sort_function);
+		//void set_sort_function(Sort* sort_function);
 		void add_element(Base* element); 
 		void print();
 		void sort();
